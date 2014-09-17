@@ -38,9 +38,9 @@ class RMLightbox
 
         $config = RMSettings::plugin_settings( 'lightbox', true );
 		
-		$css = $config->theme != '' ? $config->theme : 'default';
-		
-		RMTemplate::get()->add_style($css.'/colorbox.css', 'rmcommon', 'plugins/lightbox');
+		$css = $config->theme != '' ? $config->theme : 'example1';
+
+		RMTemplate::get()->add_style($css.'/colorbox.css', 'rmcommon', array( 'directory' => 'plugins/lightbox' ) );
         RMTemplate::get()->add_head('<!--LightBoxPlugin-->');
 
         // Options
@@ -114,7 +114,7 @@ class RMLightbox
 
         foreach( $this->options as $name => $value ){
 
-            if ( $value = 'true' || $value == 'false' )
+            if ( $value == 'true' || $value == 'false' )
                 $value = $value;
             elseif ( is_string( $value ) )
                 $value = "'" . $value . "'";
@@ -140,7 +140,8 @@ class RMLightbox
 		
         $script .= "});\n</script>\n";
 
-        RMTemplate::get()->add_local_script('jquery.colorbox-min.js', 'rmcommon', 'plugins/lightbox');
+        RMTemplate::get()->add_script('jquery.colorbox-min.js', 'rmcommon', array( 'directory' => 'plugins/lightbox' ) );
+        RMTemplate::get()->add_head( $script );
         
         return $script;
 

@@ -22,7 +22,7 @@ class LightboxPluginRmcommonPreload{
     * Replaces all ocrrencies for lightbox with the apropiate code
     * @param string $output XOOPS output
     * @return string $text Output converted 	
-    */
+    *
     public function eventRmcommonEndFlush($output){
         
         if(defined('XOOPS_CPFUNC_LOADED'))
@@ -46,6 +46,6 @@ class LightboxPluginRmcommonPreload{
         
         return $text;
         
-    }
+    }*/
 }
 

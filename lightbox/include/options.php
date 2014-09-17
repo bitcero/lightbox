@@ -19,10 +19,10 @@ $options['theme'] = array(
 );
 // Load themes
 include_once XOOPS_ROOT_PATH.'/class/xoopslists.php';
-$dirs = XoopsLists::getDirListAsArray(RMCPATH.'/plugins/lightbox/themes/');
+$dirs = XoopsLists::getDirListAsArray(RMCPATH.'/plugins/lightbox/css/');
 $opts = array();
 foreach($dirs as $dir){
-	if (is_file(RMCPATH.'/plugins/lightbox/themes/'.$dir.'/colorbox.css'))
+	if (is_file(RMCPATH.'/plugins/lightbox/css/'.$dir.'/colorbox.css'))
 		$opts[$dir] = $dir;
 }
 $options['theme']['options'] = $opts;
