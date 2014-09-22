@@ -65,4 +65,16 @@ You can pass any valid parameter to jQuery Color box using custom code (Please, 
 [/lightbox]
 ```
 **Note:** Lighbox will use, in first place, the options than can be configured from settings form. If you specify any of those default values, then the new value provide by ypu will be used.
----
+
+-----
+
+#### Using with PHP
+You can use the plugin directly from your PHP code.
+
+**Example:**
+
+´´´html
+<div class="my-thumbnails">
+  <a href="image-url" class="my-thumb-item" title="The image title"><img src="thumb-url"></a>
+</div>
+```
