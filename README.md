@@ -28,4 +28,5 @@ Next is the list of available options in Lightbox plugin.
 
 | Option | Default | Posible Values | Description |
 |--------|---------|----------------|-------------|
-|*Lightbox Theme*| `Example1` | Values from list | This option allows you to change the appearance of plugin |
+|**Theme**| `Example1` | *Values from list* | This option allows you to change the appearance of plugin |
+|**Transition type** | `Elastic` | *Elastic, Fade or None* | Determines the behavior of plugin to adapt to content size |
