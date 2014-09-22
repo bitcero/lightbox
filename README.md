@@ -55,7 +55,7 @@ This is the easier way for alls. In order to integrate lighbox with any image (o
 [/lightbox]
 ```
 #### Passing parameters with custom code
-You can pass any valid parameter to jQuery Color box using custom code (Please, check a [list of valid options!](http://www.jacklmoore.com/colorbox/)).
+You can pass any valid parameter to jQuery Color box using custom code (Please, check a [list of valid options](http://www.jacklmoore.com/colorbox/)).
 
 ```
 [lighbox name="lightbox-container" rel="my-thumbnails" transition="fase" scalePhotos="true"]
