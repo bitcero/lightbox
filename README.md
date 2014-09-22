@@ -30,3 +30,8 @@ Next is the list of available options in Lightbox plugin.
 |--------|---------|----------------|-------------|
 |**Theme**| `Example1` | *Values from list* | This option allows you to change the appearance of plugin |
 |**Transition type** | `Elastic` | *Elastic, Fade or None* | Determines the behavior of plugin to adapt to content size |
+| **Transition speed** | `350` | *Any positive integer value* | Sets the speed of the fade and elastic transitions, in milliseconds. |
+| **Max width** | `90%` | Any valid value for css property (e.g. 500px, 50%, etc.). Leave **0** for no limit. | Set a maximum width for loaded content. |
+| **Max height** | `90%` | Any valid value for css property (e.g. 500px, 50%, etc.). Leave **0** for no limit. | Set a maximum height for loaded content. Example: "100%", 500, "500px". Leave 0 for no limit. |
+| **Scale images** | `Yes` | *Yes or No* | If "yes" and if Max width or Max height have been defined, ColorBox will scale photos to fit within the those values. |
+| **Loop images** | `Yes` | *Yes or No* | If "No", will disable the ability to loop back to the beginning of the group when on the last element. |
