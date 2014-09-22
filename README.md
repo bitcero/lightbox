@@ -73,7 +73,7 @@ You can use the plugin directly from your PHP code.
 
 **Example:**
 
-´´´html
+```html
 <div class="my-thumbnails">
   <a href="image-url" class="my-thumb-item" title="The image title"><img src="thumb-url"></a>
 </div>
