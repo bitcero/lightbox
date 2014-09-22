@@ -39,3 +39,18 @@ Next is the list of available options in Lightbox plugin.
 | **Slideshow speed** | `2500` | *Any positive integer value* | Sets the speed of the slideshow, in milliseconds. |
 | **Slideshow auto start** | `No` | *Yes or No* | If "Yes", the slideshow will automatic start to play. |
 | **Addtitional settings** | `Empty` | *Any other javascript option to pass to jquery plugin* | You can input here any other option that will be passed to jquery plugin declaration. You can view a complete list of available options [here!](http://www.jacklmoore.com/colorbox/) |
+---
+
+### How to use
+Using LightBox for Common Utilities is very simple.
+
+#### Using custom code
+This is the easier way for alls. In order to integrate lighbox with any image (or other elements), you can use the next code:
+
+```
+[lightbox]
+<a href="#" class="class-name"><img src="thumbanail"></a>
+<a ...></a>
+...
+[/lightbox]
+```
