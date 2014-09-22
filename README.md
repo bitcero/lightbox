@@ -73,8 +73,20 @@ You can use the plugin directly from your PHP code.
 
 **Example:**
 
+_HTML code_
 ```html
 <div class="my-thumbnails">
-  <a href="image-url" class="my-thumb-item" title="The image title"><img src="thumb-url"></a>
+  <a href="image-url-1" class="my-thumb-item" title="The image title"><img src="thumb-url-1"></a>
+  <a href="image-url-2" class="my-thumb-item" title="The image title"><img src="thumb-url-2"></a>
+  <a href="image-url-3" class="my-thumb-item" title="The image title"><img src="thumb-url-3"></a>
+  ...
 </div>
+```
+
+_PHP code_
+```php
+if (RMFunctions::plugin_installed('lightbox')){
+  RMLightbox::get()->add_element('**.my-thumbnails**');
+  RMLightbox::get()->render();
+}
 ```
