@@ -1,7 +1,7 @@
 LightBox for Common Utilities
 ========
 
-This plugin integrates jQuery ColorBox in XOOPS and Common Utilities.
+This plugin integrates jQuery ColorBox in XOOPS and [Common Utilities](https://github.com/bitcero/rmcommon).
 
 ---
 
