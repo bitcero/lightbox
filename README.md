@@ -93,6 +93,8 @@ if (RMFunctions::plugin_installed('lightbox')){
 
 Now, Lighbox will search for a continer with class `my-thumbnails` in HTMl code and will render the apropiate code to display jQuery Colorbox plugin.
 
+#### Passing parameters with PHP
+
 You can pass parameters to javascript code using PHP:
 
 _New PHP code:_
