@@ -73,7 +73,7 @@ You can use the plugin directly from your PHP code.
 
 **Example:**
 
-_HTML code_
+_HTML code:_
 ```html
 <div class="my-thumbnails">
   <a href="image-url-1" class="my-thumb-item" title="The image title"><img src="thumb-url-1"></a>
@@ -83,10 +83,25 @@ _HTML code_
 </div>
 ```
 
-_PHP code_
+_PHP code:_
 ```php
 if (RMFunctions::plugin_installed('lightbox')){
-  RMLightbox::get()->add_element('**.my-thumbnails**');
+  RMLightbox::get()->add_element('.my-thumbnails');
+  RMLightbox::get()->render();
+}
+```
+
+Now, Lighbox will search for a continer with class `my-thumbnails` in HTMl code and will render the apropiate code to display jQuery Colorbox plugin.
+
+You can pass parameters to javascript code using PHP:
+
+_New PHP code:_
+```php
+if (RMFunctions::plugin_installed('lightbox')){
+  RMLightbox::get()->add_element('.my-thumbnails');
+  // Options
+  RMLightbox::get()->add_option( 'rel', 'work-image-item' ); // This will show the images as group related for "my-thumb-item" css class
+  RMLightbox::get()->add_option( 'transition', 'fade' ); // This will overwrite de default value for "transition" option.
   RMLightbox::get()->render();
 }
 ```
