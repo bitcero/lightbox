@@ -24,3 +24,8 @@ This plugin provides a set of configuration options that can be useful in most o
 Now you can view the configuration form. Modify the values acording to your preferences.
 
 #### Configuration options
+Next is the list of available options in Lightbox plugin.
+
+| Option | Default | Posible Values | Description |
+|--------|---------|----------------|-------------|
+|*Lightbox Theme*| `Example1` | Values from list | This option allows you to change the appearance of plugin |
