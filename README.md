@@ -49,7 +49,17 @@ This is the easier way for alls. In order to integrate lighbox with any image (o
 
 ```
 [lightbox]
-<a href="#" class="class-name"><img src="thumbanail"></a>
+<a href="#" class="class-name"><img src="thumbnail"></a>
+<a ...></a>
+...
+[/lightbox]
+```
+#### Passing parameters with custom code
+You can pass any valid parameter to jQuery Color box using custom code (Please, check a [list of valid options!](http://www.jacklmoore.com/colorbox/)).
+
+```
+[lighbox name="lightbox-container" rel="my-thumbnails" transition="fase" scalePhotos="true"]
+<a href="#" class="class-name"><img src="my-thumbnails"></a>
 <a ...></a>
 ...
 [/lightbox]
