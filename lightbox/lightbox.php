@@ -157,20 +157,35 @@ class RMLightbox
 */
 function render_lightbox_element( $atts, $content ){
 
-    extract(RMCustomCode::get()->atts( $atts, array(
+    $settings = RMSettings::plugin_settings( 'lighbox', true );
 
-        'rel'   => '',
-        'name'  => 'lightbox-container'
+    $options = RMCustomCode::get()->atts( $atts, array(
 
-    )));
+        'rel'               => 'false',
+        'name'              => 'lightbox-container',
+        'transition'        => $settings->transition,
+        'speed'             => $settings->speed,
+        'maxWidth'          => $settings->width,
+        'maxHeight'         => $settings->height,
+        'scalePhotos'       => $settings->scale ? 'true' : 'false',
+        'slideshow'         => $settings->slideshow ? 'true' : 'false',
+        'slideshowSpeed'    => $settings->slspeed,
+        'slideshowAuto'     => $settings->slauto ? 'true' : 'false',
+        'slideshowStart'    => __('Start Slideshow','lightbox'),
+        'slideshowStop'     => __('Stop Slideshow','lightbox')
 
-    $ret = '<div class="' . $name . '">' . $content . '</div>';
+    ));
 
-	RMLightbox::get()->add_element( ".$name > a" );
+    $ret = '<div class="' . $options['name'] . '">' . $content . '</div>';
 
-    if ( $rel != '' )
-        RMLightbox::get()->add_option( 'rel', $rel );
-	
-	return '<div class="lightbox-container">'.(isset($matches[3]) ? $matches[3] : $matches[1]).'</div>';
+	RMLightbox::get()->add_element( ".$options[name] > a" );
+
+    foreach ( $options as $option => $value ){
+
+        RMLightbox::get()->add_option( $option, $value );
+
+    }
+
+	return $ret;
 	
 }
