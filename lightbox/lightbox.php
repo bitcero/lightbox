@@ -21,7 +21,7 @@ class RMLightbox
      */
     private $options = array();
 	
-	public function get(){
+	static public function get(){
 		static $instance;
 		
 		if (isset($instance))
@@ -106,8 +106,8 @@ class RMLightbox
     }
 	
 	public function render(){
-        $script = "<script type='text/javascript'>\n";
-        $script .= "var lburl = '".RMCURL."/plugins/lightbox';\n";
+        //$script = "<script type='text/javascript'>\n";
+        $script = "var lburl = '".RMCURL."/plugins/lightbox';\n";
 		
         $config = RMSettings::plugin_settings( 'lightbox', true );
         $params = '';
@@ -138,10 +138,10 @@ class RMLightbox
 		    $script .= "\$(\"$this->elements\").colorbox(lb_params);\n";
         }
 		
-        $script .= "});\n</script>\n";
+        $script .= "});\n";
 
-        RMTemplate::get()->add_script('jquery.colorbox-min.js', 'rmcommon', array( 'directory' => 'plugins/lightbox' ) );
-        RMTemplate::get()->add_head( $script );
+        RMTemplate::getInstance()->add_script('jquery.colorbox-min.js', 'rmcommon', array( 'directory' => 'plugins/lightbox' ) );
+        RMTemplate::getInstance()->add_inline_script( $script, 1 );
         
         return $script;
 

@@ -12,10 +12,10 @@
 
 $options['theme'] = array(
         'caption'   =>  __('Lightbox theme','lightbox'),
-        'desc'      =>  __('Select the appearance taht you wish for Lightbox plugin','lightbox'),
+        'desc'      =>  __('Select the appearance that you wish for Lightbox plugin','lightbox'),
         'fieldtype'      =>  'select',
         'valuetype' =>  'text',
-        'value'   =>  'default'
+        'value'   =>  'example1'
 );
 // Load themes
 include_once XOOPS_ROOT_PATH.'/class/xoopslists.php';
@@ -36,9 +36,9 @@ $options['transition'] = array(
         'valuetype' =>  'text',
         'value'   =>  'elastic',
         'options' => array(
-        	__('Elastic','lightbox')=>'elastic',
-        	__('Fade','lightbox')=>'fade',
-        	__('None','lightbox')=>'none',
+        	'elastic' => __('Elastic','lightbox'),
+            'fade' => __('Fade','lightbox'),
+            'none' => __('None','lightbox'),
         )
 );
 
@@ -127,7 +127,7 @@ $options['slauto'] = array(
 
 $options['configs'] = array(
         'caption'   =>  __('Addtitional settings','lightbox'),
-        'desc'      =>  sprintf(__('Use this field to add extra configurations to lightbox. You can view all available options %s.','lightbox'), '<a href="http://www.jacklmoore.com/colorbox/" target="_blank">'.__('here','lightbox')),
+        'desc'      =>  sprintf(__('Use this field to add extra configurations to lightbox. You can view all available options %s.','lightbox'), '<a href="http://www.jacklmoore.com/colorbox/" target="_blank">'.__('here','lightbox').'</a>'),
         'fieldtype'      =>  'textarea',
         'valuetype' =>  'text',
         'value'   =>  ''

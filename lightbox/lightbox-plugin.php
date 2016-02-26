@@ -18,12 +18,12 @@ class LightBoxCUPlugin extends RMIPlugin
         $this->info = array(
             'name'          => __('Lightbox Plugin', 'lightbox'),
             'description'   => __('This plugin allows to use jQuery Colorbox in modules and other elements.','lightbox'),
-            'version'       => array('major' => 1, 'minor' => 10, 'stage' => 0, 'name' => 'Lightbox Plugin'),
+            'version'       => array('major' => 1, 'minor' => 12, 'stage' => 0, 'name' => 'Lightbox Plugin'),
             'author'        => 'Eduardo Cortés',
             'email'         => 'i.bitcero@gmail.com',
             'web'           => 'http://eduardocortes.mx',
             'dir'           => 'lightbox',
-            'updateurl'     => 'http://www.xoopsmexico.net/modules/vcontrol/',
+            'updateurl'     => 'https://www.xoopsmexico.net/modules/vcontrol/',
             'hasmain'       => true
         );
         
@@ -50,5 +50,15 @@ class LightBoxCUPlugin extends RMIPlugin
         require 'include/options.php';
         return $options;
         
+    }
+
+    static function getInstance(){
+        static $instance;
+
+        if(!isset($instance)){
+            $instance = new LightBoxCUPlugin();
+        }
+
+        return $instance;
     }
 }
