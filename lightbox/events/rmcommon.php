@@ -10,7 +10,7 @@
 
 class LightboxPluginRmcommonPreload{
 	
-	public function eventRmcommonBaseLoaded(){
+	static function eventRmcommonBaseLoaded(){
 		include_once RMCPATH.'/plugins/lightbox/lightbox.php';
         RMLightbox::get();
 
