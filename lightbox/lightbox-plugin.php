@@ -10,14 +10,15 @@
 
 class LightBoxCUPlugin extends RMIPlugin
 {
-	public function __construct(){
+    public function __construct()
+    {
         
         // Load language
         load_plugin_locale('lightbox', '', 'rmcommon');
         
         $this->info = array(
             'name'          => __('Lightbox Plugin', 'lightbox'),
-            'description'   => __('This plugin allows to use jQuery Colorbox in modules and other elements.','lightbox'),
+            'description'   => __('This plugin allows to use jQuery Colorbox in modules and other elements.', 'lightbox'),
             'version'       => array('major' => 1, 'minor' => 12, 'stage' => 0, 'name' => 'Lightbox Plugin'),
             'author'        => 'Eduardo Cortés',
             'email'         => 'i.bitcero@gmail.com',
@@ -26,36 +27,39 @@ class LightBoxCUPlugin extends RMIPlugin
             'updateurl'     => 'https://www.xoopsmexico.net/modules/vcontrol/',
             'hasmain'       => true
         );
-        
     }
     
-    public function on_install(){
+    public function on_install()
+    {
         return true;
     }
     
-    public function on_uninstall(){
+    public function on_uninstall()
+    {
         return true;
     }
     
-    public function on_update(){
+    public function on_update()
+    {
         return true;
     }
     
-    public function on_activate($q){
+    public function on_activate($q)
+    {
         return true;
     }
     
-    public function options(){
-        
+    public function options()
+    {
         require 'include/options.php';
         return $options;
-        
     }
 
-    static function getInstance(){
+    public static function getInstance()
+    {
         static $instance;
 
-        if(!isset($instance)){
+        if (!isset($instance)) {
             $instance = new LightBoxCUPlugin();
         }
 

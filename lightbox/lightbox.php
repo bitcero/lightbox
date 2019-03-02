@@ -10,37 +10,39 @@
 
 class RMLightbox
 {
-	/**
-	* Contains elements to be hanlded by lightbox
-	* 
-	* @var mixed
-	*/
-	public $elements = array();
+    /**
+    * Contains elements to be hanlded by lightbox
+    *
+    * @var mixed
+    */
+    public $elements = array();
     /**
      * @var array Options to render
      */
     private $options = array();
-	
-	static public function get(){
-		static $instance;
-		
-		if (isset($instance))
-			return $instance;
-		
-		$instance = new RMLightbox();
-		return $instance;
-	}
-	
-	public function __construct(){
+    
+    public static function get()
+    {
+        static $instance;
         
-		RMTemplate::get()->add_jquery( true );
-		//RMTemplate::get()->add_local_script('jquery.colorbox-min.js', 'rmcommon', 'plugins/lightbox');
+        if (isset($instance)) {
+            return $instance;
+        }
+        
+        $instance = new RMLightbox();
+        return $instance;
+    }
+    
+    public function __construct()
+    {
+        RMTemplate::get()->add_jquery(true);
+        //RMTemplate::get()->add_local_script('jquery.colorbox-min.js', 'rmcommon', 'plugins/lightbox');
 
-        $config = RMSettings::plugin_settings( 'lightbox', true );
-		
-		$css = $config->theme != '' ? $config->theme : 'example1';
+        $config = RMSettings::plugin_settings('lightbox', true);
+        
+        $css = $config->theme != '' ? $config->theme : 'example1';
 
-		RMTemplate::get()->add_style($css.'/colorbox.css', 'rmcommon', array( 'directory' => 'plugins/lightbox' ) );
+        RMTemplate::get()->add_style($css.'/colorbox.css', 'rmcommon', array( 'directory' => 'plugins/lightbox' ));
         RMTemplate::get()->add_head('<!--LightBoxPlugin-->');
 
         // Options
@@ -53,40 +55,42 @@ class RMLightbox
             'loop'          => $config->loop ? 'true':'false'
         );
 
-        if($config->slideshow){
-            $this->options = array_merge( $this->options, array(
+        if ($config->slideshow) {
+            $this->options = array_merge($this->options, array(
                 'slideshow'         => $config->slideshow ? 'true' : 'false',
                 'slideshowSpeed'    => $config->slspeed,
                 'slideshowAuto'     => $config->slauto ? 'true' : 'false',
-                'slideshowStart'    => __('Start Slideshow','lightbox'),
-                'slideshowStop'     => __('Stop Slideshow','lightbox')
+                'slideshowStart'    => __('Start Slideshow', 'lightbox'),
+                'slideshowStop'     => __('Stop Slideshow', 'lightbox')
             ));
         }
-
-	}
-	
-	/**
-	* Elements that can be hadled by lighbox plugin.
-	* eg. #container a (Will handle all "a" elements inside "#container" element)
-	* eg. a.lights (will handle all "a" elements with class "lights")
-	* 
-	* You can provide a single element as string, or an array with all elements that you whish to hanlde
-	* 
-	* @param string|array $elements
-	*/
-	public function add_element($elements){		
-		if (is_array($elements)){
-			foreach ($elements as $element){
-				if (in_array($element, $this->elements))
-					continue;
-				$this->elements[] = $element;
-			}
-		} else {
-			if (in_array($elements, $this->elements))
-				return;
-			$this->elements[] = $elements;
-		}
-	}
+    }
+    
+    /**
+    * Elements that can be hadled by lighbox plugin.
+    * eg. #container a (Will handle all "a" elements inside "#container" element)
+    * eg. a.lights (will handle all "a" elements with class "lights")
+    *
+    * You can provide a single element as string, or an array with all elements that you whish to hanlde
+    *
+    * @param string|array $elements
+    */
+    public function add_element($elements)
+    {
+        if (is_array($elements)) {
+            foreach ($elements as $element) {
+                if (in_array($element, $this->elements)) {
+                    continue;
+                }
+                $this->elements[] = $element;
+            }
+        } else {
+            if (in_array($elements, $this->elements)) {
+                return;
+            }
+            $this->elements[] = $elements;
+        }
+    }
 
     /**
      * Add a new option to javascript
@@ -94,72 +98,75 @@ class RMLightbox
      * @param $value <p>Value for this option.</p>
      * @return bool
      */
-    public function add_option( $name, $value ){
-
-        if ( trim($name) == '' )
+    public function add_option($name, $value)
+    {
+        if (trim($name) == '') {
             return false;
+        }
 
         $this->options[ $name ] = $value;
 
         return true;
-
     }
-	
-	public function render(){
+    
+    public function render()
+    {
         //$script = "<script type='text/javascript'>\n";
         $script = "var lburl = '".RMCURL."/plugins/lightbox';\n";
-		
-        $config = RMSettings::plugin_settings( 'lightbox', true );
+        
+        $config = RMSettings::plugin_settings('lightbox', true);
         $params = '';
 
-        foreach( $this->options as $name => $value ){
-
-            if ( $value == 'true' || $value == 'false' )
+        foreach ($this->options as $name => $value) {
+            if ($value == 'true' || $value == 'false') {
                 $value = $value;
-            elseif ( is_string( $value ) )
+            } elseif (is_string($value)) {
                 $value = "'" . $value . "'";
+            }
 
             $params .= $params == '' ? "$name: $value" : ", $name: $value";
-
         }
 
-        if ( $config->configs != '' )
+        if ($config->configs != '') {
             $params .= ", $config->configs";
-		
+        }
+        
         $script .= "var lb_params = {".$params."};\n";
-        if(!defined('RM_LB_PARAMS')) define('RM_LB_PARAMS',1);
+        if (!defined('RM_LB_PARAMS')) {
+            define('RM_LB_PARAMS', 1);
+        }
                 
         $script .= "\$(function(){\n";
-        if (is_array($this->elements)){
-            foreach ($this->elements as $element){
+        if (is_array($this->elements)) {
+            foreach ($this->elements as $element) {
                 $script .= "\$(\"$element\").colorbox(lb_params);\n";
-		    }
+            }
         } else {
-		    $script .= "\$(\"$this->elements\").colorbox(lb_params);\n";
+            $script .= "\$(\"$this->elements\").colorbox(lb_params);\n";
         }
-		
+        
         $script .= "});\n";
 
-        RMTemplate::getInstance()->add_script('jquery.colorbox-min.js', 'rmcommon', array( 'directory' => 'plugins/lightbox' ) );
-        RMTemplate::getInstance()->add_inline_script( $script, 1 );
+        RMTemplate::getInstance()->add_script('jquery.colorbox-min.js', 'rmcommon', array( 'directory' => 'plugins/lightbox' ));
+        RMTemplate::getInstance()->add_inline_script($script, 1);
         
         return $script;
-
-	}
-	
-	public function __destruct(){
-		//self::get()->render();
-	}
+    }
+    
+    public function __destruct()
+    {
+        //self::get()->render();
+    }
 }
 
 /**
 * Function to handle matches from preg_replace_callback
 */
-function render_lightbox_element( $atts, $content ){
+function render_lightbox_element($atts, $content)
+{
+    $settings = RMSettings::plugin_settings('lighbox', true);
 
-    $settings = RMSettings::plugin_settings( 'lighbox', true );
-
-    $options = RMCustomCode::get()->atts( $atts, array(
+    $options = RMCustomCode::get()->atts($atts, array(
 
         'rel'               => 'false',
         'name'              => 'lightbox-container',
@@ -171,21 +178,18 @@ function render_lightbox_element( $atts, $content ){
         'slideshow'         => $settings->slideshow ? 'true' : 'false',
         'slideshowSpeed'    => $settings->slspeed,
         'slideshowAuto'     => $settings->slauto ? 'true' : 'false',
-        'slideshowStart'    => __('Start Slideshow','lightbox'),
-        'slideshowStop'     => __('Stop Slideshow','lightbox')
+        'slideshowStart'    => __('Start Slideshow', 'lightbox'),
+        'slideshowStop'     => __('Stop Slideshow', 'lightbox')
 
     ));
 
     $ret = '<div class="' . $options['name'] . '">' . $content . '</div>';
 
-	RMLightbox::get()->add_element( ".$options[name] > a" );
+    RMLightbox::get()->add_element(".$options[name] > a");
 
-    foreach ( $options as $option => $value ){
-
-        RMLightbox::get()->add_option( $option, $value );
-
+    foreach ($options as $option => $value) {
+        RMLightbox::get()->add_option($option, $value);
     }
 
-	return $ret;
-	
+    return $ret;
 }
