@@ -10,53 +10,57 @@
 
 class LightBoxCUPlugin extends RMIPlugin
 {
-	public function __construct(){
-        
+    public function __construct()
+    {
         // Load language
         load_plugin_locale('lightbox', '', 'rmcommon');
-        
-        $this->info = array(
-            'name'          => __('Lightbox Plugin', 'lightbox'),
-            'description'   => __('This plugin allows to use jQuery Colorbox in modules and other elements.','lightbox'),
-            'version'       => array('major' => 1, 'minor' => 12, 'stage' => 0, 'name' => 'Lightbox Plugin'),
-            'author'        => 'Eduardo Cortés',
-            'email'         => 'i.bitcero@gmail.com',
-            'web'           => 'http://eduardocortes.mx',
-            'dir'           => 'lightbox',
-            'updateurl'     => 'https://www.xoopsmexico.net/modules/vcontrol/',
-            'hasmain'       => true
-        );
-        
-    }
-    
-    public function on_install(){
-        return true;
-    }
-    
-    public function on_uninstall(){
-        return true;
-    }
-    
-    public function on_update(){
-        return true;
-    }
-    
-    public function on_activate($q){
-        return true;
-    }
-    
-    public function options(){
-        
-        require 'include/options.php';
-        return $options;
-        
+
+        $this->info = [
+            'name' => __('Lightbox Plugin', 'lightbox'),
+            'description' => __('This plugin allows to use jQuery Colorbox in modules and other elements.', 'lightbox'),
+            'version' => ['major' => 1, 'minor' => 12, 'stage' => 0, 'name' => 'Lightbox Plugin'],
+            'author' => 'Eduardo Cortés',
+            'email' => 'i.bitcero@gmail.com',
+            'web' => 'http://eduardocortes.mx',
+            'dir' => 'lightbox',
+            'updateurl' => 'https://www.xoopsmexico.net/modules/vcontrol/',
+            'hasmain' => true,
+        ];
     }
 
-    static function getInstance(){
+    public function on_install()
+    {
+        return true;
+    }
+
+    public function on_uninstall()
+    {
+        return true;
+    }
+
+    public function on_update()
+    {
+        return true;
+    }
+
+    public function on_activate($q)
+    {
+        return true;
+    }
+
+    public function options()
+    {
+        require __DIR__ . '/include/options.php';
+
+        return $options;
+    }
+
+    public static function getInstance()
+    {
         static $instance;
 
-        if(!isset($instance)){
-            $instance = new LightBoxCUPlugin();
+        if (!isset($instance)) {
+            $instance = new self();
         }
 
         return $instance;

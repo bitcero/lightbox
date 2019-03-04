@@ -8,44 +8,43 @@
 // License: GPL 2.0
 // --------------------------------------------------------------
 
-class LightboxPluginRmcommonPreload{
-	
-	static function eventRmcommonBaseLoaded(){
-		include_once RMCPATH.'/plugins/lightbox/lightbox.php';
+class LightboxPluginRmcommonPreload
+{
+    public static function eventRmcommonBaseLoaded()
+    {
+        require_once RMCPATH . '/plugins/lightbox/lightbox.php';
         RMLightbox::get();
 
-        RMCustomCode::get()->add( 'lightbox', 'render_lightbox_element' );
+        RMCustomCode::get()->add('lightbox', 'render_lightbox_element');
+    }
 
-	}
-	
     /**
     * Replaces all ocrrencies for lightbox with the apropiate code
     * @param string $output XOOPS output
-    * @return string $text Output converted 	
+    * @return string $text Output converted
     *
     public function eventRmcommonEndFlush($output){
-        
+
         if(defined('XOOPS_CPFUNC_LOADED'))
             return $output;
-        
+
         $pattern = "/\[lightbox=(['\"]?)([^\"'<>]*)\\1](.*)\[\/lightbox\]/sU";
         $text = preg_replace_callback($pattern, 'found_lightbox', $output);
-        
+
         $pattern = "/\[lightbox](.*)\[\/lightbox\]/sU";
         $text = preg_replace_callback($pattern, 'found_lightbox', $output);
 
         if(RMLightbox::get()->elements){
-            
+
             if(!defined('RM_LB_PARAMS'))
                 $script = '<script type="text/javascript" src="'.XOOPS_URL.'/modules/rmcommon/plugins/lightbox/js/jquery.colorbox-min.js"></script>'."\n";
             else
                 $script = "\n";
-            
+
             $text = str_replace("<!--LightBoxPlugin-->", $script.RMLightbox::get()->render(), $text);
         }
-        
+
         return $text;
-        
+
     }*/
 }
-
