@@ -12,12 +12,12 @@ class LightboxPluginRmcommonPreload
 {
     public static function eventRmcommonBaseLoaded()
     {
-        include_once RMCPATH.'/plugins/lightbox/lightbox.php';
+        require_once RMCPATH . '/plugins/lightbox/lightbox.php';
         RMLightbox::get();
 
         RMCustomCode::get()->add('lightbox', 'render_lightbox_element');
     }
-    
+
     /**
     * Replaces all ocrrencies for lightbox with the apropiate code
     * @param string $output XOOPS output
